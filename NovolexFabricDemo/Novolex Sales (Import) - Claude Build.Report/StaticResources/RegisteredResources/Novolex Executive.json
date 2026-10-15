@@ -1,0 +1,90 @@
+{
+  "name": "Novolex Executive.json",
+  "dataColors": [
+    "#14264F",
+    "#1B3164",
+    "#224289",
+    "#2A4F9B",
+    "#335CAD",
+    "#4069B8",
+    "#4E77C0",
+    "#5E86C8",
+    "#6E95CF",
+    "#7FA4D6",
+    "#90B3DD",
+    "#A2C1E4",
+    "#B4CFEA",
+    "#C6DCF1",
+    "#D8E8F7",
+    "#EAF3FC"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#14264F",
+  "tableAccent": "#224289",
+  "maximum": "#14264F",
+  "center": "#224289",
+  "minimum": "#F4F6F8",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 13,
+      "color": "#14264F"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#14264F"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 26,
+      "color": "#14264F"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#5B6B7F"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DCE3EC"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#14264F"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 12,
+            "alignment": "left"
+          }
+        ]
+      }
+    }
+  }
+}

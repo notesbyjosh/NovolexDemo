@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "Novolex_Sales"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "49a39ed1-b3d7-8cd0-4a9b-8824d00ef879"
+  }
+}

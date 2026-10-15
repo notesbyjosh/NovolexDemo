@@ -1,0 +1,642 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "22b39120-685b-9f7d-4831-38d5f9c7ae83",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "Novolex Sales (Direct Lake)",
+  "type": "semantic_model",
+  "userDescription": null,
+  "metadata": null,
+  "elements": [
+    {
+      "id": "Date",
+      "is_selected": true,
+      "display_name": "Date",
+      "type": "semantic_model.table",
+      "description": "Calendar and Novolex fiscal calendar (fiscal year starts June 1, ends May 31). Use for time-based analysis, year-over-year, and fiscal year-to-date.",
+      "children": [
+        {
+          "id": "Date2",
+          "is_selected": true,
+          "display_name": "Date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Year",
+          "is_selected": true,
+          "display_name": "Year",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Quarter",
+          "is_selected": true,
+          "display_name": "Quarter",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Month",
+          "is_selected": true,
+          "display_name": "Month",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Day_of_Month",
+          "is_selected": true,
+          "display_name": "Day of Month",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Day_of_Week",
+          "is_selected": true,
+          "display_name": "Day of Week",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Week_of_Year",
+          "is_selected": true,
+          "display_name": "Week of Year",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Is_Weekend",
+          "is_selected": true,
+          "display_name": "Is Weekend",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Fiscal_Year",
+          "is_selected": true,
+          "display_name": "Fiscal Year",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Fiscal_Period",
+          "is_selected": true,
+          "display_name": "Fiscal Period",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Fiscal_Month",
+          "is_selected": true,
+          "display_name": "Fiscal Month",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Product",
+      "is_selected": true,
+      "display_name": "Product",
+      "type": "semantic_model.table",
+      "description": "Novolex packaging catalog across brands (Hilex Poly, Duro Bag, Bagcraft, Waddington, Fabri-Kal, Eco-Products, Vegware, De Luxe), organized by Segment (end market) > Category > Subcategory > Product Name.",
+      "children": [
+        {
+          "id": "SKU",
+          "is_selected": true,
+          "display_name": "SKU",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Product_Name",
+          "is_selected": true,
+          "display_name": "Product Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Brand",
+          "is_selected": true,
+          "display_name": "Brand",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Category",
+          "is_selected": true,
+          "display_name": "Category",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Subcategory",
+          "is_selected": true,
+          "display_name": "Subcategory",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Segment",
+          "is_selected": true,
+          "display_name": "Segment",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Finish",
+          "is_selected": true,
+          "display_name": "Finish",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Size",
+          "is_selected": true,
+          "display_name": "Size",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Package_Type",
+          "is_selected": true,
+          "display_name": "Package Type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Standard_Cost",
+          "is_selected": true,
+          "display_name": "Standard Cost",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "List_Price",
+          "is_selected": true,
+          "display_name": "List Price",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Status",
+          "is_selected": true,
+          "display_name": "Status",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Customer",
+      "is_selected": true,
+      "display_name": "Customer",
+      "type": "semantic_model.table",
+      "description": "B2B customers of packaging (foodservice distributors, grocery chains, restaurant chains, mass retail, club/wholesale, food processors, industrial distributors) with channel, customer type, and geography.",
+      "children": [
+        {
+          "id": "Customer_Name",
+          "is_selected": true,
+          "display_name": "Customer Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Channel",
+          "is_selected": true,
+          "display_name": "Channel",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Customer_Type",
+          "is_selected": true,
+          "display_name": "Customer Type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "City",
+          "is_selected": true,
+          "display_name": "City",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "State_Province",
+          "is_selected": true,
+          "display_name": "State/Province",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Country",
+          "is_selected": true,
+          "display_name": "Country",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Sales_Territory",
+      "is_selected": false,
+      "display_name": "Sales Territory",
+      "type": "semantic_model.table",
+      "description": "Sales geography grouped as Group > Country > Region (North America, Europe, Asia Pacific, Latin America, Middle East & Africa).",
+      "children": [
+        {
+          "id": "Region",
+          "is_selected": true,
+          "display_name": "Region",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Country",
+          "is_selected": true,
+          "display_name": "Country",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Group",
+          "is_selected": true,
+          "display_name": "Group",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Salesperson",
+      "is_selected": true,
+      "display_name": "Salesperson",
+      "type": "semantic_model.table",
+      "description": "Sales representatives and managers, one per territory.",
+      "children": [
+        {
+          "id": "Salesperson2",
+          "is_selected": true,
+          "display_name": "Salesperson",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Title",
+          "is_selected": true,
+          "display_name": "Title",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Region",
+          "is_selected": true,
+          "display_name": "Region",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Hire_Date",
+          "is_selected": true,
+          "display_name": "Hire Date",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Promotion",
+      "is_selected": true,
+      "display_name": "Promotion",
+      "type": "semantic_model.table",
+      "description": "Discount, rebate, and national-account programs applied to orders.",
+      "children": [
+        {
+          "id": "Promotion2",
+          "is_selected": true,
+          "display_name": "Promotion",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Discount__",
+          "is_selected": true,
+          "display_name": "Discount %",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Promotion_Type",
+          "is_selected": true,
+          "display_name": "Promotion Type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Sales",
+      "is_selected": true,
+      "display_name": "Sales",
+      "type": "semantic_model.table",
+      "description": "Order-line fact table (one row per product per order): net sales, cost, quantity, and discount, plus the certified measures (Total Sales, Gross Profit, Gross Margin %, YoY, fiscal YTD, Avg Order Value).",
+      "children": [
+        {
+          "id": "Order_Number",
+          "is_selected": true,
+          "display_name": "Order Number",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Unit_Price",
+          "is_selected": true,
+          "display_name": "Unit Price",
+          "type": "semantic_model.column",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Total_Sales",
+          "is_selected": true,
+          "display_name": "Total Sales",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Net sales revenue (after discounts).",
+          "children": []
+        },
+        {
+          "id": "Gross_Profit",
+          "is_selected": true,
+          "display_name": "Gross Profit",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Total Sales minus Total Cost.",
+          "children": []
+        },
+        {
+          "id": "Gross_Margin__",
+          "is_selected": true,
+          "display_name": "Gross Margin %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Gross Profit as a percent of Total Sales.",
+          "children": []
+        },
+        {
+          "id": "Total_Quantity",
+          "is_selected": true,
+          "display_name": "Total Quantity",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Total units ordered.",
+          "children": []
+        },
+        {
+          "id": "Discount_Amount",
+          "is_selected": true,
+          "display_name": "Discount Amount",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Total discount given off list price.",
+          "children": []
+        },
+        {
+          "id": "Avg_Discount__",
+          "is_selected": true,
+          "display_name": "Avg Discount %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average discount as a percent of gross (list) sales.",
+          "children": []
+        },
+        {
+          "id": "Sales_YoY__",
+          "is_selected": true,
+          "display_name": "Sales YoY %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Year-over-year sales growth versus the prior year.",
+          "children": []
+        },
+        {
+          "id": "Sales_Fiscal_YTD",
+          "is_selected": true,
+          "display_name": "Sales Fiscal YTD",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Sales year-to-date within Novolex's fiscal year (starts June 1, ends May 31).",
+          "children": []
+        },
+        {
+          "id": "Sales_vs_Fiscal_PY__",
+          "is_selected": true,
+          "display_name": "Sales vs Fiscal PY %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Fiscal YTD growth versus the prior fiscal year.",
+          "children": []
+        },
+        {
+          "id": "Distinct_Orders",
+          "is_selected": true,
+          "display_name": "Distinct Orders",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Count of unique sales orders.",
+          "children": []
+        },
+        {
+          "id": "Avg_Order_Value",
+          "is_selected": true,
+          "display_name": "Avg Order Value",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average net sales per order.",
+          "children": []
+        },
+        {
+          "id": "Discount_Base",
+          "is_selected": true,
+          "display_name": "Discount Base",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Gross (list) sales before discounts.",
+          "children": []
+        },
+        {
+          "id": "Order_Qty_YoY__",
+          "is_selected": true,
+          "display_name": "Order Qty YoY %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Year-over-year growth in order quantity.",
+          "children": []
+        },
+        {
+          "id": "GM_bps_YoY",
+          "is_selected": true,
+          "display_name": "GM bps YoY",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Year-over-year change in gross margin, in basis points.",
+          "children": []
+        },
+        {
+          "id": "Segment_Mix__",
+          "is_selected": true,
+          "display_name": "Segment Mix %",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Segment share of selected net sales.",
+          "children": []
+        },
+        {
+          "id": "Distinct_Products",
+          "is_selected": true,
+          "display_name": "Distinct Products",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Count of distinct products sold.",
+          "children": []
+        },
+        {
+          "id": "Distinct_Customers",
+          "is_selected": true,
+          "display_name": "Distinct Customers",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Count of distinct customers.",
+          "children": []
+        },
+        {
+          "id": "Net_Sales___M_",
+          "is_selected": true,
+          "display_name": "Net Sales ($M)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Net sales scaled to millions for table display.",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "Sales_Variance",
+      "is_selected": false,
+      "display_name": "Sales Variance",
+      "type": "semantic_model.table",
+      "description": "Pre-computed year-over-year net sales bridge (FY25 Base, Volume, Price/Mix, New Products, Discounts) used by the waterfall.",
+      "children": [
+        {
+          "id": "Category",
+          "is_selected": true,
+          "display_name": "Category",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Type",
+          "is_selected": true,
+          "display_name": "Type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "Variance_Value",
+          "is_selected": true,
+          "display_name": "Variance Value",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Net sales variance bridge amount.",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

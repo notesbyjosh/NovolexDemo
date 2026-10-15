@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Novolex Sales Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9f20a7a1-efca-92dd-41f3-85b3f4289f7a"
+  }
+}

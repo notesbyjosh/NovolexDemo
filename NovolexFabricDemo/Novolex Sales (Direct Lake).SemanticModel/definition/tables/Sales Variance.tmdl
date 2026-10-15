@@ -1,0 +1,36 @@
+/// Pre-computed year-over-year net sales bridge (FY25 Base, Volume, Price/Mix, New Products, Discounts) used by the waterfall.
+table 'Sales Variance'
+
+	/// Net sales variance bridge amount.
+	measure 'Variance Value' = SUM('Sales Variance'[Value Base])
+		formatString: $#,##0
+
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+		sortByColumn: 'Step Order'
+
+	column 'Step Order'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: StepOrder
+
+	column 'Value Base'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: Value
+
+	column Type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Type
+
+	partition 'Sales Variance' = entity
+		mode: directLake
+		source
+			entityName: factvariance
+			expressionSource: 'DirectLake - Novolex Sales'
+

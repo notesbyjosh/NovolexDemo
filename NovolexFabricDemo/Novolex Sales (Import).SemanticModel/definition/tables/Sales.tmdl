@@ -1,0 +1,210 @@
+/// Order-line fact table (one row per product per order): net sales, cost, quantity, and discount, plus the certified measures (Total Sales, Gross Profit, Gross Margin %, YoY, fiscal YTD, Avg Order Value).
+table Sales
+
+	/// Net sales revenue (after discounts).
+	measure 'Total Sales' = SUM(Sales[Sales Amount])
+		formatString: $#,##0
+
+	/// Total standard product cost.
+	measure 'Total Cost' = SUM(Sales[Total Product Cost])
+		formatString: $#,##0
+		isHidden
+
+	/// Total Sales minus Total Cost.
+	measure 'Gross Profit' = [Total Sales] - [Total Cost]
+		formatString: $#,##0
+
+	/// Gross Profit as a percent of Total Sales.
+	measure 'Gross Margin %' = DIVIDE([Gross Profit], [Total Sales])
+		formatString: 0.0%
+
+	/// Total units ordered.
+	measure 'Total Quantity' = SUM(Sales[Order Quantity])
+		formatString: #,##0
+
+	/// Total discount given off list price.
+	measure 'Discount Amount' = SUM(Sales[Discount Amount Base])
+		formatString: $#,##0
+
+	/// Average discount as a percent of gross (list) sales.
+	measure 'Avg Discount %' = DIVIDE([Discount Amount], [Total Sales] + [Discount Amount])
+		formatString: 0.0%
+
+	/// Total Sales for the same period in the prior year.
+	measure 'Sales PY' = VAR a = EDATE(MIN('Date'[Date]), -12) VAR b = EDATE(MAX('Date'[Date]), -12) RETURN CALCULATE([Total Sales], ALL('Date'), 'Date'[Date] >= a && 'Date'[Date] <= b)
+		formatString: $#,##0
+		isHidden
+
+	/// Year-over-year sales growth versus the prior year.
+	measure 'Sales YoY %' = DIVIDE([Total Sales] - [Sales PY], [Sales PY])
+		formatString: 0.0%
+
+	/// Sales year-to-date within Novolex's fiscal year (starts June 1, ends May 31).
+	measure 'Sales Fiscal YTD' = VAR m = MAX('Date'[Date]) VAR s = DATE(IF(MONTH(m) >= 6, YEAR(m), YEAR(m) - 1), 6, 1) RETURN CALCULATE([Total Sales], ALL('Date'), 'Date'[Date] >= s && 'Date'[Date] <= m)
+		formatString: $#,##0
+
+	/// Prior-year fiscal year-to-date sales.
+	measure 'Sales Fiscal YTD PY' = VAR m = EDATE(MAX('Date'[Date]), -12) VAR s = DATE(IF(MONTH(m) >= 6, YEAR(m), YEAR(m) - 1), 6, 1) RETURN CALCULATE([Total Sales], ALL('Date'), 'Date'[Date] >= s && 'Date'[Date] <= m)
+		formatString: $#,##0
+		isHidden
+
+	/// Fiscal YTD growth versus the prior fiscal year.
+	measure 'Sales vs Fiscal PY %' = DIVIDE([Sales Fiscal YTD] - [Sales Fiscal YTD PY], [Sales Fiscal YTD PY])
+		formatString: 0.0%
+
+	/// Count of unique sales orders.
+	measure 'Distinct Orders' = DISTINCTCOUNT(Sales[Order Number])
+		formatString: #,##0
+
+	/// Average net sales per order.
+	measure 'Avg Order Value' = DIVIDE([Total Sales], [Distinct Orders])
+		formatString: $#,##0
+
+	/// Gross (list) sales before discounts.
+	measure 'Discount Base' = [Total Sales] + [Discount Amount]
+		formatString: $#,##0
+
+	/// Prior-year order quantity.
+	measure 'Total Quantity PY' = VAR a = EDATE(MIN('Date'[Date]), -12) VAR b = EDATE(MAX('Date'[Date]), -12) RETURN CALCULATE([Total Quantity], ALL('Date'), 'Date'[Date] >= a && 'Date'[Date] <= b)
+		formatString: #,##0
+		isHidden
+
+	/// Year-over-year growth in order quantity.
+	measure 'Order Qty YoY %' = DIVIDE([Total Quantity] - [Total Quantity PY], [Total Quantity PY])
+		formatString: 0.0%
+
+	/// Prior-year gross margin percent.
+	measure 'GM % PY' = VAR a = EDATE(MIN('Date'[Date]), -12) VAR b = EDATE(MAX('Date'[Date]), -12) RETURN CALCULATE([Gross Margin %], ALL('Date'), 'Date'[Date] >= a && 'Date'[Date] <= b)
+		formatString: 0.0%
+		isHidden
+
+	/// Year-over-year change in gross margin, in basis points.
+	measure 'GM bps YoY' = ([Gross Margin %] - [GM % PY]) * 10000
+		formatString: #,##0
+
+	/// Segment share of selected net sales.
+	measure 'Segment Mix %' = DIVIDE([Total Sales], CALCULATE([Total Sales], ALLSELECTED(Product[Segment])))
+		formatString: 0.0%
+
+	/// Count of distinct products sold.
+	measure 'Distinct Products' = DISTINCTCOUNT(Product[Product Name])
+		formatString: #,##0
+
+	/// Count of distinct customers.
+	measure 'Distinct Customers' = DISTINCTCOUNT(Customer[Customer Name])
+		formatString: #,##0
+
+	/// Net sales scaled to millions for table display.
+	measure 'Net Sales ($M)' = [Total Sales]
+		formatString: $#,##0,,
+
+	column 'Order Number'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+	column 'Order Line'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: SalesOrderLineNumber
+
+	column OrderDateKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+	column DueDateKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: DueDateKey
+
+	column ShipDateKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ShipDateKey
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column SalespersonKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: SalespersonKey
+
+	column PromotionKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: PromotionKey
+
+	column 'Order Quantity'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: OrderQuantity
+
+	column 'Unit Price'
+		dataType: double
+		formatString: $#,##0.00
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+	column 'Unit Cost'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: UnitCost
+
+	column 'Sales Amount'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: SalesAmount
+
+	column 'Total Product Cost'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: TotalProductCost
+
+	column 'Discount Amount Base'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: DiscountAmount
+
+	column 'Gross Profit Base'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: GrossProfit
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database("bidogiressnu7mprkzh7qhatvq-jhhycmnebfpudkfevo3gnxsq7m.datawarehouse.fabric.microsoft.com", "Novolex_Sales"),
+					Data = Source{[Schema="dbo",Item="factsales"]}[Data]
+				in
+					Data
+

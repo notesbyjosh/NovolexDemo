@@ -1,0 +1,7 @@
+expression 'DirectLake - Novolex Sales' =
+		let
+			Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/3181cf49-09a4-415f-a8a4-abb666de50fb/d00ef879-8824-4a9b-8cd0-b3d749a39ed1", [HierarchicalNavigation=true])
+		in
+			Source
+	lineageTag: 00000000-0000-0000-0000-0000000000aa
+

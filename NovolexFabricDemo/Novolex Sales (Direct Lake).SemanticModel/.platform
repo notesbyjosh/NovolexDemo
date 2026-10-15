@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Novolex Sales (Direct Lake)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "22b39120-685b-9f7d-4831-38d5f9c7ae83"
+  }
+}

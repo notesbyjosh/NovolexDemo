@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Load Novolex CSVs"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2e47ff10-642c-be42-434e-c425c80b5436"
+  }
+}

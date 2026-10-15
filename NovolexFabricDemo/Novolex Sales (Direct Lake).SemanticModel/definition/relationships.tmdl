@@ -1,0 +1,29 @@
+relationship Sales_OrderDate
+	fromColumn: Sales.OrderDateKey
+	toColumn: Date.DateKey
+
+relationship Sales_ShipDate
+	isActive: false
+	fromColumn: Sales.ShipDateKey
+	toColumn: Date.DateKey
+
+relationship Sales_Product
+	fromColumn: Sales.ProductKey
+	toColumn: Product.ProductKey
+
+relationship Sales_Customer
+	fromColumn: Sales.CustomerKey
+	toColumn: Customer.CustomerKey
+
+relationship Sales_Territory
+	fromColumn: Sales.TerritoryKey
+	toColumn: 'Sales Territory'.TerritoryKey
+
+relationship Sales_Salesperson
+	fromColumn: Sales.SalespersonKey
+	toColumn: Salesperson.SalespersonKey
+
+relationship Sales_Promotion
+	fromColumn: Sales.PromotionKey
+	toColumn: Promotion.PromotionKey
+

@@ -1,0 +1,42 @@
+/// Sales representatives and managers, one per territory.
+table Salesperson
+
+	column SalespersonKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: SalespersonKey
+
+	column Salesperson
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: SalespersonName
+
+	column Title
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Title
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column Region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Region
+
+	column 'Hire Date'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: HireDate
+
+	partition Salesperson = entity
+		mode: directLake
+		source
+			entityName: dimsalesperson
+			expressionSource: 'DirectLake - Novolex Sales'
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Novolex Sales (Import) - Claude Build"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5ba60bda-2360-b81c-4b12-6bfbf8e7cc86"
+  }
+}

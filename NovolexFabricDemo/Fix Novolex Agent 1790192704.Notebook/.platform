@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Fix Novolex Agent 1790192704"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a64d61ef-03a1-af82-4f82-da9c044539eb"
+  }
+}

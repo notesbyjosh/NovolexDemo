@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/2.0.0/schema.json",
+  "themeCollection": {
+    "customTheme": {
+      "name": "Novolex Executive.json",
+      "type": "RegisteredResources",
+      "reportVersionAtImport": "2.0.0"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Novolex Executive.json",
+          "path": "Novolex Executive.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "novolex-logo1790190898458.png",
+          "path": "novolex-logo1790190898458.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true
+  }
+}

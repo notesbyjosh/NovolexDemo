@@ -1,0 +1,35 @@
+/// Discount, rebate, and national-account programs applied to orders.
+table Promotion
+
+	column PromotionKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: PromotionKey
+
+	column Promotion
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: PromotionName
+
+	column 'Discount %'
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		sourceColumn: DiscountPct
+
+	column 'Promotion Type'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PromotionType
+
+	partition Promotion = m
+		mode: import
+		source =
+				let
+					Source = Sql.Database("bidogiressnu7mprkzh7qhatvq-jhhycmnebfpudkfevo3gnxsq7m.datawarehouse.fabric.microsoft.com", "Novolex_Sales"),
+					Data = Source{[Schema="dbo",Item="dimpromotion"]}[Data]
+				in
+					Data
+

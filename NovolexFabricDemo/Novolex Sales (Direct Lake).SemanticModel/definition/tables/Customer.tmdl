@@ -1,0 +1,63 @@
+/// B2B customers of packaging (foodservice distributors, grocery chains, restaurant chains, mass retail, club/wholesale, food processors, industrial distributors) with channel, customer type, and geography.
+table Customer
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column 'Customer Name'
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+	column Channel
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Channel
+
+	column 'Customer Type'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CustomerType
+
+	column City
+		dataType: string
+		summarizeBy: none
+		sourceColumn: City
+
+	column State/Province
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StateProvince
+
+	column Country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Country
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	hierarchy 'Customer Geography'
+
+		level Country
+			column: Country
+
+		level State/Province
+			column: State/Province
+
+		level City
+			column: City
+
+	partition Customer = entity
+		mode: directLake
+		source
+			entityName: dimcustomer
+			expressionSource: 'DirectLake - Novolex Sales'
+

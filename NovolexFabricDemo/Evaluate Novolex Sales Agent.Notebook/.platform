@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Evaluate Novolex Sales Agent"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ced9378d-ca7f-9209-434d-c02ee4dfaef6"
+  }
+}

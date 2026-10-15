@@ -1,0 +1,42 @@
+/// Sales geography grouped as Group > Country > Region (North America, Europe, Asia Pacific, Latin America, Middle East & Africa).
+table 'Sales Territory'
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column Region
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: Region
+
+	column Country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Country
+
+	column Group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Group
+
+	hierarchy Territory
+
+		level Group
+			column: Group
+
+		level Country
+			column: Country
+
+		level Region
+			column: Region
+
+	partition 'Sales Territory' = entity
+		mode: directLake
+		source
+			entityName: dimsalesterritory
+			expressionSource: 'DirectLake - Novolex Sales'
+

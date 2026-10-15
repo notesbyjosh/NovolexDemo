@@ -1,0 +1,137 @@
+/// Calendar and Novolex fiscal calendar (fiscal year starts June 1, ends May 31). Use for time-based analysis, year-over-year, and fiscal year-to-date.
+table Date
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Year
+
+	column 'Quarter Number'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	column Quarter
+		dataType: string
+		summarizeBy: none
+		sourceColumn: QuarterName
+		sortByColumn: 'Quarter Number'
+
+	column MonthNumber
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+	column Month
+		dataType: string
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNumber
+
+	column 'Month Short'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: MonthShort
+
+	column 'Day of Month'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+	column DayOfWeek
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+	column 'Day of Week'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DayName
+		sortByColumn: DayOfWeek
+
+	column 'Week of Year'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: WeekOfYear
+
+	column 'Is Weekend'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+	column FiscalYear
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: FiscalYear
+
+	column 'Fiscal Year'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FiscalYearName
+		sortByColumn: FiscalYear
+
+	column FiscalQuarter
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: FiscalQuarter
+
+	column 'Fiscal Period'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FiscalPeriodName
+
+	column 'Fiscal Month Number'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: FiscalMonthOfYear
+
+	column 'Fiscal Month'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FiscalMonthName
+		sortByColumn: 'Fiscal Month Number'
+
+	hierarchy Calendar
+
+		level Year
+			column: Year
+
+		level Quarter
+			column: Quarter
+
+		level Month
+			column: Month
+
+	hierarchy 'Fiscal Calendar'
+
+		level 'Fiscal Year'
+			column: 'Fiscal Year'
+
+		level 'Fiscal Period'
+			column: 'Fiscal Period'
+
+	partition Date = entity
+		mode: directLake
+		source
+			entityName: dimdate
+			expressionSource: 'DirectLake - Novolex Sales'
+

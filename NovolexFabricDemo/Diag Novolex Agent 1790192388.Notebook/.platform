@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Diag Novolex Agent 1790192388"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9f1ca8a1-bcae-8b8f-4b0d-3499c31041e1"
+  }
+}

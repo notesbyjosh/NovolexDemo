@@ -1,0 +1,92 @@
+/// Novolex packaging catalog across brands (Hilex Poly, Duro Bag, Bagcraft, Waddington, Fabri-Kal, Eco-Products, Vegware, De Luxe), organized by Segment (end market) > Category > Subcategory > Product Name.
+table Product
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column SKU
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SKU
+
+	column 'Product Name'
+		dataType: string
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: ProductName
+
+	column Brand
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Brand
+
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+
+	column Subcategory
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+	column Segment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Segment
+
+	column Finish
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Finish
+
+	column Size
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Size
+
+	column 'Package Type'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PackageType
+
+	column 'Standard Cost'
+		dataType: double
+		formatString: $#,##0.00
+		summarizeBy: none
+		sourceColumn: StandardCost
+
+	column 'List Price'
+		dataType: double
+		formatString: $#,##0.00
+		summarizeBy: none
+		sourceColumn: ListPrice
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Status
+
+	hierarchy 'Product Hierarchy'
+
+		level Segment
+			column: Segment
+
+		level Category
+			column: Category
+
+		level Subcategory
+			column: Subcategory
+
+		level 'Product Name'
+			column: 'Product Name'
+
+	partition Product = entity
+		mode: directLake
+		source
+			entityName: dimproduct
+			expressionSource: 'DirectLake - Novolex Sales'
+
